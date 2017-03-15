@@ -27,7 +27,7 @@ function WebcamError() {
 	this.message = temp.message;
 }
 
-IntermediateInheritor = function() {};
+var IntermediateInheritor = function() {};
 IntermediateInheritor.prototype = Error.prototype;
 
 FlashError.prototype = new IntermediateInheritor();
@@ -827,7 +827,7 @@ var Webcam = {
 		// create inline function, called after image load (flash) or immediately (native)
 		var func = function() {
 			// render image if needed (flash)
-			if (this.src && this.width && this.height) {
+			if (this !== undefined && this.src && this.width && this.height) {
 				context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
 			}
 			
